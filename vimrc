@@ -76,6 +76,18 @@ inoremap {<Enter> {}<Left><CR><ESC><S-o>
 inoremap ( ()<ESC>i
 inoremap (<Enter> ()<Left><CR><ESC><S-o>
 
+" PLUGING BY PLUGGED ------------------------------
+" vim-plug: https://github.com/junegunn/vim-plug
+
+call plug#begin('~/.vim/plugged')
+  Plug 'crusoexia/vim-monokai'
+  Plug 'pangloss/vim-javascript'
+  Plug 'crusoexia/vim-javascript-lib'
+call plug#end()
+
+colorscheme monokai
+
+
 " REFERENCES ---------------------------------------
 " https://www.drupal.org/docs/develop/development-tools/configuring-vim
 " http://qiita.com/mfujimori/items/9fd41bcd8d1ce9170301
