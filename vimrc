@@ -29,12 +29,41 @@ autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 " Move to next or previous lines by moving forward.
 set whichwrap=h,l
 
+" Allow navigation via mouse.
+if has('mouse')
+  set mouse=a
+  if has('mouse_sgr')
+    set ttymouse=sgr
+  elseif v:version > 703 || v:version is 703 && has('patch632')
+    set ttymouse=sgr
+  else
+    set ttymouse=xterm2
+  endif
+ endif
+
+" Turn off indentation when pasting from clipboard.
+if &term =~ "xterm"
+    let &t_SI .= "\e[?2004h"
+    let &t_EI .= "\e[?2004l"
+    let &pastetoggle = "\e[201~"
+
+    function XTermPasteBegin(ret)
+        set paste
+        return a:ret
+    endfunction
+
+    inoremap <special> <expr> <Esc>[200~ XTermPasteBegin("")
+endif
+
 " DISPLAY SETTINGS -------------------------------
 " Show line numbers.
 set number
 
 " Show tab as "\▸\-".
 set list listchars=tab:\▸\-
+
+" Highlight cursor line.
+set cursorline 
 
 " Show location of the cursor.
 set ruler
@@ -83,6 +112,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'crusoexia/vim-monokai'
   Plug 'pangloss/vim-javascript'
   Plug 'crusoexia/vim-javascript-lib'
+  Plug 'scrooloose/nerdtree'
 call plug#end()
 
 colorscheme monokai
@@ -92,3 +122,5 @@ colorscheme monokai
 " https://www.drupal.org/docs/develop/development-tools/configuring-vim
 " http://qiita.com/mfujimori/items/9fd41bcd8d1ce9170301
 " http://chat-rate.com/it/1635
+
+
