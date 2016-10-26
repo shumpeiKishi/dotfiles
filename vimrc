@@ -23,6 +23,9 @@ set shiftwidth=2
 set autoindent
 set smartindent
 
+" ◯□to 全角
+set ambiwidth=double
+
 " Auto complete PHP syntax. (Actually not sure what this is...)
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 
