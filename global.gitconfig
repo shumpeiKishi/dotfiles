@@ -1,0 +1,21 @@
+[core]
+	excludesfile = /Users/skishi/.gitignore
+	autocrlf = input
+[user]
+	name = Shumpei Kishi
+	email = shumpei.kishi@gmail.com
+[credential]
+	helper = osxkeychain
+[push]
+	default = simple
+[color]
+	ui = true
+[pull]
+	rebase = true
+[rerere]
+	enabled = true
+[alias]
+	lg = log --oneline --decorate --all --graph
+	a = add .
+  c = commit -m
+  p = push
